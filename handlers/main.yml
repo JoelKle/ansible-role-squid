@@ -8,3 +8,8 @@
   service:
     name: "{{ squid_service }}"
     state: restarted
+
+- name: reload squid
+  service:
+    name: "{{ squid_service }}"
+    state: reloaded

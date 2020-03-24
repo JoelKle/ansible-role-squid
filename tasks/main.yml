@@ -14,7 +14,7 @@
     dest: "{{ squid_config_directory }}/{{ squid_config_file }}"
   notify:
     - test squid configuration
-    - restart squid
+    - reload squid
 
 - name: create group
   group:
@@ -40,6 +40,9 @@
     state: directory
     owner: "{{ squid_user }}"
     group: "{{ squid_group }}"
+  notify:
+    - test squid configuration
+    - restart squid
 
 - name: flush_handlers
   meta: flush_handlers
